@@ -17,6 +17,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="queries.css" />
     <title>Readalong</title>
   </head>
   <body>
@@ -66,7 +67,7 @@
     </header>
 
     <main class="main-sections">
-      <aside class="section-aside">
+      <aside class="section-aside hidden">
         <div class="total-books">
           <div><p class="total-num">52</p></div>
           <div class="total-text">
@@ -159,7 +160,7 @@
       </aside>
 
       <section class="section-books">
-        <div>
+        <div class="select-list-container">
           <select class="select-list">
             <option value="latest">latest</option>
             <option value="oldest">oldest</option>
@@ -170,6 +171,7 @@
             <option value="list">list</option>
             <option value="table">table</option>
           </select>
+          <button class="select-list">filter</button>
         </div>
 
         <div class="books">
@@ -324,15 +326,15 @@
       <section class="section-form">
         <p class="form-header">add a new book!</p>
         <form class="form">
-          <div class="form-field">
+          <div class="form-field form-name">
             <label class="form-label" for="name">name*</label>
             <input class="form-input" id="name" type="text" required />
           </div>
-          <div class="form-field">
+          <div class="form-field form-author">
             <label class="form-label" for="author">author*</label>
             <input class="form-input" id="author" type="text" required />
           </div>
-          <div class="form-field">
+          <div class="form-field form-genre">
             <label class="form-label" for="select-genre">genre*</label>
             <select
               class="form-select-genre"
@@ -352,7 +354,7 @@
               <option value="romance">romance</option>
             </select>
           </div>
-          <div class="form-field">
+          <div class="form-field form-date">
             <label class="form-label" for="date">date*</label>
             <input
               class="form-input"

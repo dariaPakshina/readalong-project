@@ -256,6 +256,7 @@
   padding: 0.1rem 0.3rem;
   width: max-content;
   grid-row: 3 / 4;
+  font-family: inherit;
 }
 
 .book-date {
