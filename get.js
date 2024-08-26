@@ -31,6 +31,7 @@ const renderBook = function (data) {
   booksContainer.insertAdjacentHTML("afterbegin", html);
 };
 
+// GET /traits
 const getBookData = function () {
   fetch("https://9fec009db0d7891f.mokky.dev/traits", {
     headers: {
