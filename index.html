@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="iconResized-modified.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,8 +20,11 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="queries.css" />
     <title>Readalong</title>
+    <script defer src="main.js"></script>
+    <script defer src="get.js"></script>
+    <script defer src="post.js"></script>
   </head>
-  <body>
+  <body class="body">
     <header class="header">
       <a href="#" class="logo">
         <svg
@@ -80,7 +84,7 @@
           <div class="section-filter">
             <p class="filter-by">
               genre<button class="btn-filter-show-hide">
-                <svg
+                <!-- <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -93,7 +97,7 @@
                     stroke-linejoin="round"
                     d="m19.5 8.25-7.5 7.5-7.5-7.5"
                   />
-                </svg>
+                </svg> -->
               </button>
             </p>
             <div class="filter">
@@ -106,7 +110,7 @@
           <div class="section-filter">
             <p class="filter-by">
               author<button class="btn-filter-show-hide">
-                <svg
+                <!-- <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -119,7 +123,7 @@
                     stroke-linejoin="round"
                     d="m19.5 8.25-7.5 7.5-7.5-7.5"
                   />
-                </svg>
+                </svg> -->
               </button>
             </p>
             <div class="filter">
@@ -131,7 +135,7 @@
           <div class="section-filter">
             <p class="filter-by">
               year<button class="btn-filter-show-hide">
-                <svg
+                <!-- <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -144,7 +148,7 @@
                     stroke-linejoin="round"
                     d="m19.5 8.25-7.5 7.5-7.5-7.5"
                   />
-                </svg>
+                </svg> -->
               </button>
             </p>
             <div class="filter">
@@ -172,10 +176,26 @@
             <option value="table">table</option>
           </select>
           <button class="select-list">filter</button>
+          <a href="#form" class="addNewBook"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="addIcon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 4.5v15m7.5-7.5h-15"
+              />
+            </svg>
+          </a>
         </div>
 
         <div class="books">
-          <div class="book">
+          <!-- <div class="book">
             <p class="book-name">
               War and Peace<button class="edit-btn">
                 <svg
@@ -197,163 +217,51 @@
             <p class="book-author">by Leo Tolstoy</p>
             <button class="book-genre">classics</button>
             <p class="book-date">10 aug 2024</p>
-            <p class="book-comment">
+            <p class="book-comment comment-hidden">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quod
               asperiores assumenda sed nesciunt. Libero temporibus, cum, unde
               modi, voluptatum quisquam exercitationem officia ad maiores animi
               illo repudiandae!
             </p>
-          </div>
-          <div class="book">
-            <p class="book-name">
-              Big Swiss<button class="edit-btn">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="edit-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
-                  />
-                </svg>
-              </button>
-            </p>
-            <p class="book-author">by Jen Beagin</p>
-            <button class="book-genre">contemporary</button>
-            <p class="book-date">9 aug 2024</p>
-            <p class="book-comment">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quod
-              asperiores assumenda sed nesciunt. Libero temporibus, cum, unde
-              modi, voluptatum quisquam exercitationem officia ad maiores animi
-              illo repudiandae!
-            </p>
-          </div>
-          <div class="book">
-            <p class="book-name">
-              War and Peace<button class="edit-btn">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="edit-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
-                  />
-                </svg>
-              </button>
-            </p>
-            <p class="book-author">by Leo Tolstoy</p>
-            <button class="book-genre">fantasy</button>
-            <p class="book-date">8 aug 2024</p>
-            <p class="book-comment">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quod
-              asperiores assumenda sed nesciunt. Libero temporibus, cum, unde
-              modi, voluptatum quisquam exercitationem officia ad maiores animi
-              illo repudiandae!
-            </p>
-          </div>
-          <div class="book">
-            <p class="book-name">
-              War and Peace<button class="edit-btn">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="edit-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
-                  />
-                </svg>
-              </button>
-            </p>
-            <p class="book-author">by Leo Tolstoy</p>
-            <button class="book-genre">fantasy</button>
-            <p class="book-date">8 aug 2024</p>
-            <p class="book-comment">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quod
-              asperiores assumenda sed nesciunt. Libero temporibus, cum, unde
-              modi, voluptatum quisquam exercitationem officia ad maiores animi
-              illo repudiandae!
-            </p>
-          </div>
-          <div class="book">
-            <p class="book-name">
-              The Little Lady of the Big House<button class="edit-btn">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="edit-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
-                  />
-                </svg>
-              </button>
-            </p>
-            <p class="book-author">by Jack London</p>
-            <button class="book-genre">fantasy</button>
-            <p class="book-date">8 aug 2024</p>
-            <p class="book-comment">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quod
-              asperiores assumenda sed nesciunt. Libero temporibus, cum, unde
-              modi, voluptatum quisquam exercitationem officia ad maiores animi
-              illo repudiandae!
-            </p>
-          </div>
+            <p class="see-comment">(see comment)</p>
+          </div> -->
         </div>
       </section>
 
-      <section class="section-form">
+      <section class="section-form" id="form">
         <p class="form-header">add a new book!</p>
-        <form class="form">
+        <form class="form" id="form-form">
           <div class="form-field form-name">
             <label class="form-label" for="name">name*</label>
-            <input class="form-input" id="name" type="text" required />
+            <input
+              class="form-input"
+              id="name"
+              type="text"
+              name="name"
+              required
+            />
           </div>
           <div class="form-field form-author">
             <label class="form-label" for="author">author*</label>
-            <input class="form-input" id="author" type="text" required />
+            <input
+              class="form-input"
+              id="author"
+              type="text"
+              name="author"
+              required
+            />
           </div>
           <div class="form-field form-genre">
-            <label class="form-label" for="select-genre">genre*</label>
-            <select
-              class="form-select-genre"
-              id="select-genre"
-              multiple
+            <label class="form-label" for="genre">genre*</label>
+            <input
+              class="form-input"
+              id="genre"
+              type="text"
+              name="genre"
               required
-            >
-              <option value="classics">classics</option>
-              <option value="contemporary">contemporary</option>
-              <option value="fantasy">fantasy</option>
-              <option value="sci-fi">sci-fi</option>
-              <option value="non-fiction">non-fiction</option>
-              <option value="detective">detective</option>
-              <option value="horror">horror</option>
-              <option value="YA">YA</option>
-              <option value="dystopian">dystopian</option>
-              <option value="romance">romance</option>
-            </select>
+            />
           </div>
+
           <div class="form-field form-date">
             <label class="form-label" for="date">date*</label>
             <input
@@ -361,17 +269,23 @@
               id="date"
               type="text"
               placeholder="1 jan 1999"
+              name="date"
               required
             />
           </div>
-          <div class="form-field">
+          <div class="form-field form-comment-query">
             <label class="form-label" for="comment">comment</label>
 
-            <textarea class="form-input form-comment" rows="5" id="comment">
+            <textarea
+              class="form-input form-comment"
+              rows="5"
+              id="comment"
+              name="comment"
+            >
             </textarea>
           </div>
+          <button class="submit-form-btn" type="submit">add</button>
         </form>
-        <button class="submit-form-btn">add</button>
       </section>
     </main>
     <footer>
