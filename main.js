@@ -28,22 +28,20 @@ mediaQuery2.addEventListener("change", () => changePlaceholder2(mediaQuery2));
 
 // Show / hide book comment==========================================================================
 
-let bookComment = [...document.querySelectorAll(".book-comment")];
-let stringArr = [];
+// let bookCommentsArr = [...document.querySelectorAll(".book-comment")];
+// console.log(bookCommentsArr);
+// let stringArr = [];
 
-const changeComment = function (mediaQuery3) {
-  if (mediaQuery3.matches) {
-    bookComment.forEach((com) => stringArr.push(com.innerText.slice(0, 40)));
-    for (let i = 0; i < bookComment.length; i++) {
-      bookComment[i].innerHTML = stringArr[i] + "...";
-    }
-  }
-};
-
-const mediaQuery3 = window.matchMedia("(max-width: 29em)");
-changeComment(mediaQuery3);
-
-mediaQuery3.addEventListener("change", () => changeComment(mediaQuery3));
+// const changeComment = function (mediaQuery3) {
+//   if (mediaQuery3.matches) {
+//     bookCommentsArr.forEach((com) =>
+//       stringArr.push(com.innerText.slice(0, 40))
+//     );
+//     for (let i = 0; i < bookCommentsArr.length; i++) {
+//       bookCommentsArr[i].innerHTML = stringArr[i] + "...";
+//     }
+//   }
+// };
 
 //----------------------
 
