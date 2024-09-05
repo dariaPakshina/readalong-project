@@ -18,7 +18,7 @@ const changePlaceholder2 = function (mediaQuery2) {
   if (mediaQuery2.matches) {
     document
       .querySelector(".search-input")
-      .setAttribute("placeholder", "Find a book or an author...");
+      .setAttribute("placeholder", "Find a book...");
   } else return;
 };
 const mediaQuery2 = window.matchMedia("(min-width: 34em)");
@@ -104,3 +104,60 @@ const obs = new IntersectionObserver(
   }
 );
 obs.observe(selectList);
+
+// Total book show/hide =================================
+
+const moveTotalBookNum = function (mediaQuery3) {
+  if (mediaQuery3.matches) {
+    document.querySelector(".emptyLater").innerHTML = "";
+    document.querySelector(
+      ".select-long-btns"
+    ).innerHTML = `<div class="total-books">
+              <div><p class="total-num"></p></div>
+              <div class="total-text">
+                <p class="total-text1">books</p>
+                <p class="total-text2">read</p>
+              </div>
+            </div>
+            <button class="select-list btn-filter">filter</button>`;
+
+    document.querySelector(".section-aside").style.gap = "0";
+  } else return;
+};
+const mediaQuery3 = window.matchMedia("(max-width: 34em)");
+moveTotalBookNum(mediaQuery3);
+
+mediaQuery3.addEventListener("change", () => {
+  moveTotalBookNum(mediaQuery3);
+  window.location.reload();
+});
+
+//-----------------------
+
+const moveTotalBookNum2 = function (mediaQuery4) {
+  if (mediaQuery4.matches) {
+    document.querySelector(".emptyLater").innerHTML = `<div class="total-books">
+            <div><p class="total-num"></p></div>
+            <div class="total-text">
+              <p class="total-text1">books</p>
+              <p class="total-text2">read</p>
+            </div>
+          </div>`;
+    document.querySelector(".select-long-btns").innerHTML = `
+                  <button class="select-list btn-filter">filter</button>`;
+    document.querySelector(".section-aside").style.gap = "2rem";
+  } else return;
+};
+const mediaQuery4 = window.matchMedia("(min-width: 34em)");
+moveTotalBookNum2(mediaQuery4);
+
+mediaQuery4.addEventListener("change", () => {
+  moveTotalBookNum2(mediaQuery4);
+  window.location.reload();
+});
+
+// Remove filters =============================================
+
+document
+  .querySelector(".btn-remove-filters")
+  .addEventListener("click", () => window.location.reload());

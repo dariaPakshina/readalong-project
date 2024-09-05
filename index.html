@@ -48,7 +48,7 @@
         <input
           class="search-input"
           type="text"
-          placeholder="Find a book or an author..."
+          placeholder="Find a book..."
           name="search"
         />
         <button class="btn-search">
@@ -72,90 +72,25 @@
 
     <main class="main-sections">
       <aside class="section-aside hidden">
-        <div class="total-books">
-          <div><p class="total-num"></p></div>
-          <div class="total-text">
-            <p class="total-text1">books</p>
-            <p class="total-text2">read</p>
+        <div class="emptyLater">
+          <div class="total-books">
+            <div><p class="total-num"></p></div>
+            <div class="total-text">
+              <p class="total-text1">books</p>
+              <p class="total-text2">read</p>
+            </div>
           </div>
         </div>
 
         <div class="section-filter-all">
-          <div class="section-filter">
-            <p class="filter-by">
-              genre<button class="btn-filter-show-hide">
-                <!-- <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="filter-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                  />
-                </svg> -->
-              </button>
-            </p>
-            <div class="filter">
-              <p><button class="filter-btn"></button>classics</p>
-              <p><button class="filter-btn"></button>contemporary</p>
-              <p><button class="filter-btn"></button>fantasy</p>
-            </div>
+          <div class="section-filter filter-by-genre">
+            <p class="filter-by">genre</p>
           </div>
-
-          <div class="section-filter">
-            <p class="filter-by">
-              author<button class="btn-filter-show-hide">
-                <!-- <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="filter-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                  />
-                </svg> -->
-              </button>
-            </p>
-            <div class="filter">
-              <p><button class="filter-btn"></button>Leo Tolstoy</p>
-              <p><button class="filter-btn"></button>Jen Beagin</p>
-              <p><button class="filter-btn"></button>Mark Twen</p>
-            </div>
+          <div class="section-filter filter-by-author">
+            <p class="filter-by">author</p>
           </div>
-          <div class="section-filter">
-            <p class="filter-by">
-              year<button class="btn-filter-show-hide">
-                <!-- <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="filter-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                  />
-                </svg> -->
-              </button>
-            </p>
-            <div class="filter">
-              <p><button class="filter-btn"></button>2022</p>
-              <p><button class="filter-btn"></button>2023</p>
-              <p><button class="filter-btn"></button>2024</p>
-            </div>
+          <div class="section-filter filter-by-year">
+            <p class="filter-by">year</p>
           </div>
           <div class="section-filter">
             <button class="btn-remove-filters">remove filters</button>
@@ -166,17 +101,7 @@
       <section class="section-books">
         <div class="select-list-container">
           <div class="select-long-btns">
-            <select class="select-list">
-              <option value="latest">latest</option>
-              <option value="oldest">oldest</option>
-              <option value="highest rating">highest rating</option>
-              <option value="lowest rating">lowest rating</option>
-            </select>
-            <!-- <select class="select-list">
-            <option value="list">list</option>
-            <option value="table">table</option>
-          </select> -->
-            <button class="select-list">filter</button>
+            <button class="select-list btn-filter">filter</button>
           </div>
           <a href="#form" class="addNewBook"
             ><svg
@@ -250,7 +175,7 @@
               class="form-input"
               id="rating"
               type="text"
-              placeholder="10"
+              placeholder="0 - 10"
               name="rating"
               required
             />

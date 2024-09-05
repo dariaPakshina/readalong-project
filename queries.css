@@ -121,7 +121,7 @@
   .section-aside {
     gap: 1rem;
     padding-top: 1rem;
-    width: 100%;
+    width: 86%;
   }
 
   .section-books {
@@ -137,7 +137,7 @@
   }
 
   .book {
-    grid-template-columns: 1fr 1.6fr;
+    grid-template-columns: 1fr 1.2fr;
     padding: 0.5rem 2rem 0.5rem 1rem;
     gap: 0.1rem 0.2rem;
     height: 7rem;
@@ -282,8 +282,33 @@
     width: 1rem;
   }
 
+  .total-num {
+    font-size: 1.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 10px;
+  }
+
+  .total-text1,
+  .total-text2 {
+    font-size: 0.9rem;
+  }
+
+  .select-long-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+
   .select-list-container {
     justify-content: space-between;
+    height: fit-content;
+    align-items: center;
+  }
+
+  .btn-filter {
+    display: inline;
+    font-size: 88% !important;
   }
 
   .book-comment {
@@ -308,6 +333,7 @@
 
   .books {
     margin-top: 1.5rem;
+    margin-right: 0.5rem;
   }
 
   .book {
@@ -342,6 +368,22 @@
     width: 90%;
     margin-bottom: 3.5rem;
   }
+
+  .sticky .select-list-container {
+    margin-top: 3.8rem;
+  }
+
+  .sticky .select-list {
+    margin-top: 0;
+  }
+
+  .sticky .section-aside {
+    padding-top: 0.1rem;
+  }
+
+  .filter {
+    gap: 0.1rem;
+  }
 }
 
 /**************************/
@@ -350,7 +392,7 @@
 
 @media (max-width: 29em) {
   .main-sections {
-    padding: 0;
+    padding: 0.3rem;
   }
   .book {
     grid-template-columns: 1.3fr 1fr;
@@ -372,6 +414,13 @@
   .footer-text {
     font-size: 0.8rem;
   }
+  .books {
+    gap: 0.9rem;
+  }
+
+  /* .book {
+    height: fit-content;
+  } */
 }
 
 /**************************/
@@ -383,14 +432,23 @@
     width: 3rem;
   }
 
+  /* .book {
+    height: 9rem;
+  } */
+
   .form {
     padding: 0 0.5rem;
     gap: 0.6rem;
   }
 
-  /* .section-form {
-    margin-left: 0.7rem;
-  } */
+  .main-sections {
+    padding-right: 0rem;
+    padding-left: 0.2rem;
+  }
+
+  body {
+    width: 24.2rem;
+  }
 }
 
 /**************************/
@@ -399,12 +457,12 @@
 
 @media (max-width: 21.4em) {
   .main-sections {
-    padding-right: 0.9rem;
-    padding-left: 0;
+    padding-right: 0.1rem;
+    padding-left: 0.2rem;
   }
 
   .section-books {
-    width: 20rem;
+    width: 24rem;
   }
 
   .book {
@@ -427,7 +485,7 @@
     font-size: 1.2rem;
   }
 
-  /* .section-form {
-    margin-right: 2rem;
-  } */
+  .section-form {
+    margin-right: 1rem;
+  }
 }

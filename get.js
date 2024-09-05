@@ -2,6 +2,10 @@
 // Fetch & display all books from API ==================================================
 
 let totalBookCounter = 0;
+const searchInput = document.querySelector(".search-input");
+const btnSearch = document.querySelector(".btn-search");
+const booksContainer = document.querySelector(".books");
+const sortingList = document.querySelector(".select-list");
 
 const renderBook = function (book) {
   const mediaQuery3 = window.matchMedia("(max-width: 29em)");
@@ -42,19 +46,18 @@ const renderBook = function (book) {
     </p>
     <p class="book-rating">${book.rating}</p>
   </div>`;
+
   booksContainer.insertAdjacentHTML("afterbegin", html);
 
   // Find the specific comment element for this book (now captures the specific .book-comment element for the book that is currently being rendered)
   const commentEl = booksContainer.querySelector(".book-comment");
 
-  // Event listener for mediaQuery3
   mediaQuery3.addEventListener("change", () => {
     if (commentEl) {
       commentEl.textContent = changeComment(book, mediaQuery3, mediaQuery4);
     }
   });
 
-  // Event listener for mediaQuery4
   mediaQuery4.addEventListener("change", () => {
     if (commentEl) {
       commentEl.textContent = changeComment(book, mediaQuery3, mediaQuery4);
@@ -62,10 +65,95 @@ const renderBook = function (book) {
   });
 };
 
-//-------------------
+// Filter ==========================================================
 
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("https://9fec009db0d7891f.mokky.dev/traits", {
+const genreSet = new Set();
+const authorSet = new Set();
+const yearSet = new Set();
+
+let booksData = [];
+
+const renderFilterByGenre = () => {
+  genreSet.forEach((g) => {
+    const filterByGenre = document.querySelector(".filter-by-genre");
+    const html = `
+    <div class="filter filter-genre">
+      <input type="checkbox" class="filter-btn genre-filter" id="genre-${g}" data-genre="${g}" />
+      <label for="genre-${g}">${g}</label>
+    </div>`;
+    filterByGenre.insertAdjacentHTML("beforeend", html);
+  });
+};
+
+const renderFilterByAuthor = () => {
+  authorSet.forEach((a) => {
+    const filterByAuthor = document.querySelector(".filter-by-author");
+    const html = `
+      <div class="filter filter-author">
+        <input type="checkbox" class="filter-btn author-filter" id="author-${a}" data-author="${a}" />
+        <label for="author-${a}">${a}</label>
+      </div>`;
+    filterByAuthor.insertAdjacentHTML("beforeend", html);
+  });
+};
+
+const renderFilterByYear = () => {
+  yearSet.forEach((y) => {
+    const filterByYear = document.querySelector(".filter-by-year");
+    const html = `
+        <div class="filter filter-year">
+          <input type="checkbox" class="filter-btn year-filter" id="year-${y}" data-year="${y}" />
+          <label for="year-${y}">${y}</label>
+        </div>`;
+    filterByYear.insertAdjacentHTML("beforeend", html);
+  });
+};
+
+const filterBooks = () => {
+  const selectedGenres = Array.from(
+    document.querySelectorAll(".genre-filter:checked")
+  ).map((cb) => cb.dataset.genre);
+  const selectedAuthors = Array.from(
+    document.querySelectorAll(".author-filter:checked")
+  ).map((cb) => cb.dataset.author);
+  const selectedYears = Array.from(
+    document.querySelectorAll(".year-filter:checked")
+  ).map((cb) => cb.dataset.year);
+
+  const filteredBooks = booksData.filter((book) => {
+    const matchesGenre = selectedGenres.length
+      ? selectedGenres.includes(book.genre)
+      : true;
+    const matchesAuthor = selectedAuthors.length
+      ? selectedAuthors.includes(book.author)
+      : true;
+    const matchesYear = selectedYears.length
+      ? selectedYears.includes(book.date.slice(-4))
+      : true;
+
+    return matchesGenre && matchesAuthor && matchesYear;
+  });
+  booksContainer.innerHTML = `<div class="books"></div>`;
+
+  filteredBooks.forEach(renderBook);
+};
+
+const setupFilterListeners = () => {
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("change", filterBooks);
+  });
+};
+
+// -------------------------------
+const functionChunk = () => {
+  renderFilterByGenre();
+  renderFilterByAuthor();
+  renderFilterByYear();
+};
+
+const getFunction = (link) => {
+  fetch(`${link}`, {
     headers: {
       accept: "application/json",
     },
@@ -78,7 +166,16 @@ document.addEventListener("DOMContentLoaded", () => {
       return res.json();
     })
     .then((books) => {
+      booksData = books;
+      books.forEach((book) => {
+        genreSet.add(book.genre);
+        authorSet.add(book.author);
+        yearSet.add(book.date.slice(-4));
+      });
+      functionChunk();
+      setupFilterListeners();
       books.forEach(renderBook);
+      searchInput.value = null;
 
       // counter-------------
 
@@ -167,7 +264,38 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
 
-      // Delete
+      // Search---------------
+
+      btnSearch.addEventListener("click", (e) => {
+        e.preventDefault();
+        fetch(
+          `https://9fec009db0d7891f.mokky.dev/traits?name=*${searchInput.value}`,
+          {
+            headers: {
+              accept: "application/json",
+            },
+            method: "GET",
+            mode: "cors",
+            credentials: "include",
+          }
+        )
+          .then((res) => {
+            if (!res.ok) throw new Error(`${errorMsg} (${res.status})`);
+            return res.json();
+          })
+          .then((books) => {
+            if (books.length === 0) {
+              alert("there is no such book found!");
+              window.location.reload();
+            }
+            booksContainer.innerHTML = `<div class="books"></div>`;
+            books.forEach(renderBook);
+
+            searchInput.value = null;
+          });
+      });
+
+      // Delete---------------
 
       const htmlDelBtn = `<button class="submit-form-btn btn-delete" type='delete'>delete</button>`;
       document
@@ -192,4 +320,24 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.reload();
       });
     });
+};
+
+// ---------------
+document.addEventListener(
+  "DOMContentLoaded",
+  getFunction("https://9fec009db0d7891f.mokky.dev/traits")
+);
+
+// Filter show-hide ==========================================
+
+const btnFilter = document.querySelector(".btn-filter");
+const sectionAside = document.querySelector(".section-aside");
+const sectionFilter = document.querySelector(".section-filter-all");
+
+btnFilter.addEventListener("click", () => {
+  sectionAside.classList.toggle("hidden");
+
+  sectionAside.style.paddingLeft = "0";
+  sectionAside.style.marginLeft = "0";
+  sectionFilter.style.fontSize = "80%";
 });
